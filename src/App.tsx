@@ -1,7 +1,10 @@
+//Lorin Costley Mission 9 section 1
+
 import React from 'react';
 import './App.css';
 import teamsData from './CollegeBasketballTeam.json';
 
+// Define the interface for the properties of each team
 interface TeamProps {
   school: string;
   name: string;
@@ -9,10 +12,12 @@ interface TeamProps {
   state: string;
 }
 
+// Component for the welcome message
 function Welcome() {
   return <h1>NCAA Basketball Teams</h1>;
 }
 
+// Component for displaying an individual team card
 function TeamCard(props: TeamProps) {
   return (
     <div className="team-card-box">
@@ -26,9 +31,11 @@ function TeamCard(props: TeamProps) {
   );
 }
 
+// Component for displaying the list of teams
 function TeamList() {
   return (
     <div className="team-list">
+      {/* Map over the teams data and render a TeamCard component for each team */}
       {teamsData.teams.map((team: TeamProps, index: number) => (
         <TeamCard key={index} {...team} />
       ))}
@@ -36,10 +43,13 @@ function TeamList() {
   );
 }
 
+// Main App component
 function App() {
   return (
     <div className="App">
+      {/* Render the welcome message */}
       <Welcome />
+      {/* Render the list of teams */}
       <TeamList />
     </div>
   );
